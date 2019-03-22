@@ -16,7 +16,9 @@ $CMAKE_EXE . $CMAKE_VARS_DEFINE -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$inst
 	-DBUILD_gflags_LIB=on \
 	-DINSTALL_STATIC_LIBS=on \
 	-DINSTALL_SHARED_LIBS=off \
-	-DREGISTER_INSTALL_PREFIX=off
+	-DREGISTER_INSTALL_PREFIX=off \
+    -DCMAKE_CXX_FLAGS=-fPIC
+
 exit_on_error
 remove_if_exist $install_path
 make clean

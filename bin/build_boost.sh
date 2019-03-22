@@ -24,7 +24,7 @@ cat $BOOST_BUILD_PATH/user-config.jam
 # --without-libraries指定不编译的库
 #./bootstrap.sh --without-libraries=python,mpi,graph,graph_parallel,wave
 # --with-libraries指定编译的库
-./bootstrap.sh --with-libraries=system,thread,filesystem,regex
+./bootstrap.sh --with-libraries=system,thread,filesystem,regex,python
 exit_on_error
 ./b2 --clean
 remove_if_exist $install_path
@@ -32,6 +32,6 @@ remove_if_exist $install_path
 # --debug-configuration 编译时显示加载的配置信息
 # -q参数指示出错就停止编译
 # link=static 只编译静态库
-./b2 --prefix=$install_path -q --debug-configuration link=static install
+./b2 --prefix=$install_path -q --debug-configuration cxxflags=-fPIC cflags=-fPIC link=static install
 exit_on_error
 popd

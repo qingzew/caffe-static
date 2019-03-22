@@ -11,7 +11,7 @@ pushd $shell_folder
 ./build_boost.sh;exit_on_error
 ./build_hdf5.sh;exit_on_error
 ./build_leveldb.sh;exit_on_error
-./build_lmdb.sh;exit_on_error
+./build_lmdb_cmake.sh;exit_on_error
 ./build_OpenBLAS.sh;exit_on_error
 ./build_opencv.sh;exit_on_error
 ./build_protobuf.sh;exit_on_error

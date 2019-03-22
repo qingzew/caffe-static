@@ -13,6 +13,8 @@ clean_folder build.gcc
 pushd build.gcc
 $CMAKE_EXE .. $CMAKE_VARS_DEFINE -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=$install_path \
 	-DBUILD_SHARED_LIBS=off \
+    -DCMAKE_CXX_FLAGS=-fPIC \
+    -DCMAKE_C_FLAGS=-fPIC \
 	-DBUILD_TEST=off 
 exit_on_error
 clean_folder $install_path

@@ -26,7 +26,8 @@ exit_if_not_exist $PROTOBUF_INSTALL_PATH "not found $PROTOBUF_INSTALL_PATH,pleas
 [ -e "$PROTOBUF_INSTALL_PATH/lib64" ] && protobuf_lib=$PROTOBUF_INSTALL_PATH/lib64
 exit_if_not_exist $SNAPPY_INSTALL_PATH "not found $SNAPPY_INSTALL_PATH,please build $SNAPPY_PREFIX"
 # lmdb 安装路径根目录
-lmdb_install_root=$LMDB_INSTALL_PATH/usr/local
+#lmdb_install_root=$LMDB_INSTALL_PATH/usr/local
+lmdb_install_root=$LMDB_INSTALL_PATH
 exit_if_not_exist $lmdb_install_root "not found $lmdb_install_root,please build lmdb"
 exit_if_not_exist $LEVELDB_INSTALL_PATH "not found $LEVELDB_INSTALL_PATH,please build $LEVELDB_PREFIX"
 # opencv 配置文件(OpenCVConfig.cmake)所在路径
@@ -64,13 +65,13 @@ $CMAKE_EXE "$(dirs +1)" $CMAKE_VARS_DEFINE -G "Unix Makefiles" -DCMAKE_INSTALL_P
 	-DPROTOBUF_LITE_LIBRARY=$protobuf_lib/libprotobuf-lite.a \
 	-DPROTOBUF_PROTOC_EXECUTABLE=$PROTOBUF_INSTALL_PATH/bin/protoc \
 	-DPROTOBUF_INCLUDE_DIR=$PROTOBUF_INSTALL_PATH/include \
-	-DCPU_ONLY=ON \
+	-DCPU_ONLY=off \
 	-DBLAS=Open \
 	-DBUILD_SHARED_LIBS=off \
 	-DBUILD_docs=off \
-	-DBUILD_python=off \
+	-DBUILD_python=on \
 	-DBUILD_python_layer=off \
-	-DUSE_LEVELDB=on \
+	-DUSE_LEVELDB=off \
 	-DUSE_LMDB=on \
 	-DUSE_OPENCV=on 
 exit_on_error
